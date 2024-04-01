@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#define RAND_MAX 100
 #define Rep 100000
 
 
@@ -23,8 +22,8 @@ int main(){
     double C_Branca = (B_Brancas/B_Urna)*100;
 
     for (int i=0;i<Rep;i++) {
-        int x = rand() % RAND_MAX;
-        int y = rand() % RAND_MAX;
+        int x = rand() % 100;
+        int y = rand() % 100;
 
         if (x < C_Vermelha) {
             if (y < C_Vermelha) {

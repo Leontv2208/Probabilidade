@@ -60,7 +60,7 @@ int main(int argc, char const *argv[])
                 Ativo.NaoPrometeCount+=1;
             }
 
-        } else if(x>(Ativo.Prob-1) && x<(Ativo.Prob+Passado.Prob)){
+        } else if(x>=(Ativo.Prob) && x<(Ativo.Prob+Passado.Prob)){
             Passado.Count++;
 
             if(y<Passado.Promete){
@@ -91,19 +91,19 @@ int main(int argc, char const *argv[])
     }
 
     //Chance doador ativo efetivar
-    double Efetivo_Ativo = (Ativo.Count/rep)*(Ativo.PrometeCount/rep)*(Ativo.ChequeCount/rep);
+    double Efetivo_Ativo = (Ativo.Count)*(Ativo.PrometeCount)*(Ativo.ChequeCount);
     printf("Chance de ser ativo é %f\n", Efetivo_Ativo);
 
     //Chance doador passado efetivar
-    double Efetivo_Passado = (Passado.Count/rep)*(Passado.PrometeCount/rep)*(Passado.ChequeCount/rep);
+    double Efetivo_Passado = (Passado.Count)*(Passado.PrometeCount)*(Passado.ChequeCount);
     printf("Chance de ser passado é %f\n", Efetivo_Passado);
 
     //Chance doador prospectivo efetivar
-    double Efetivo_Prospectivo = (Prospectivo.Count/rep)*(Prospectivo.PrometeCount/rep)*(Prospectivo.ChequeCount/rep);
+    double Efetivo_Prospectivo = (Prospectivo.Count)*(Prospectivo.PrometeCount)*(Prospectivo.ChequeCount);
     printf("Chance de ser prospectivo é %f\n", Efetivo_Prospectivo);
 
     //Chance total de alguém efetivar
-    double total = Efetivo_Ativo+Efetivo_Passado+Efetivo_Prospectivo;
+    double total = (Efetivo_Ativo+Efetivo_Passado+Efetivo_Prospectivo)/rep;
 
     printf("A chance de algum doador efetivar é de %f\n", total);
 
