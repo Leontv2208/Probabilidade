@@ -6,17 +6,15 @@
 // A( ) 10% B( ) 15% C( ) 30% D( ) 50% E( ) 75%
 
 #include <stdio.h>
-#include <math.h>
 #include <stdlib.h>
 #include <time.h>
-#define RAND_MAX 100
 #define N 100000
 
 typedef struct
 {
     int qtde;
     double C_def;
-    int defeito;
+    int defeituosos;
 } parafuso;
 
 int main()
@@ -27,40 +25,35 @@ int main()
     //parametros máquina A
     A.qtde = N;
     A.C_def = 15;
-    A.defeito = 0;
+    A.defeituosos = 0;
 
     //parametros máquina B
     B.qtde = N;
     B.C_def = 5;
-    B.defeito = 0;
-
-    //quantidade total de parafusos produzidos
-    double Qtde_Caixa = A.qtde + B.qtde;
-    int x[A.qtde], y[B.qtde];
-
-    for (int a = 0; a < A.qtde; ++a) {
-        x[a]=rand()%RAND_MAX;
-        y[a]=rand()%RAND_MAX;
-    }
+    B.defeituosos = 0;
 
 
     for (int i = 0; i < A.qtde; ++i) {
-        if((x[i])<A.C_def){
-            A.defeito+=1;
+        if((rand()%100)<A.C_def){
+            A.defeituosos+=1;
         }
     }
-    printf("Quantidade de parafusos A defeituosos: %d\n", A.defeito);
+    printf("Quantidade de parafusos A defeituosos: %d\n", A.defeituosos);
 
     for (int j = 0; j < B.qtde; ++j) {
-        if(y[j]<B.C_def){
-            B.defeito+=1;
+        if((rand()%100)<B.C_def){
+            B.defeituosos+=1;
         }
     }
-    printf("Quantidade de parafusos B defeituosos: %d\n", B.defeito);
+    printf("Quantidade de parafusos B defeituosos: %d\n", B.defeituosos);
 
-    //chance de algum parafuso ser defeituoso
-    double Prob_Defeituoso = ((A.defeito/Qtde_Caixa) + (B.defeito/Qtde_Caixa))*100;
-    printf("Prob_Defeituoso = %f\n", Prob_Defeituoso);
+    //total de parafusos com defeito
+    int total_def = (A.defeituosos + B.defeituosos);
+    printf("Quantidade parafusos defeituosos: %d\n", total_def);
+
+    //Chance parafuso ser de A
+    printf("Chance parafuso defeituoso ser de A = %0.4f\n", (A.defeituosos/(double)total_def));
+    printf("Resultado Classico = 0.75\n");
 
     return 0;
 }

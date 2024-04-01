@@ -3,4 +3,4 @@ project(Probabilidade)
 
 set(CMAKE_C_STANDARD 17)
 
-add_executable(Probabilidade teste.c)
+add_executable(Probabilidade "Questão 120/Questão_120.c")

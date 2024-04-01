@@ -4,6 +4,7 @@
 #include <time.h>
 #define rep 100000
 
+
 typedef struct{
     int Prob;
     double Count;
