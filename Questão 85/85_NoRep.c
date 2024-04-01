@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#define max 100
 #define Rep 100000
 
 
@@ -15,14 +14,15 @@ int main(){
     double VV, VB, BV, BB;
 
     for (int i=0;i<Rep;i++) {
-        int x = rand() % max;
-        int y = rand() % max;
+        int x = rand() % 100;
+        int y = rand() % 100;
         double B_Vermelhas = 7;
         double B_Brancas = 3;
-        double B_Urna = B_Brancas+B_Vermelhas;
+        double B_Urna = 10;
 
         if (x < (B_Vermelhas/B_Urna)*100) {
             B_Vermelhas--;
+            B_Urna--;
             if (y < (B_Vermelhas/B_Urna)*100) {
                 VV++;
             } else {
@@ -30,19 +30,20 @@ int main(){
             }
         } else {
             B_Brancas--;
-            if (y < (B_Vermelhas/B_Urna)*100) {
-                BV++;
-            } else {
+            B_Urna--;
+            if (y < (B_Brancas/B_Urna)*100) {
                 BB++;
+            } else {
+                BV++;
             }
         }
     }
 
     printf("Sem reposicao\nEspaco Amostral = (V,V)(V,B)(B,V)(B,B)\n");
-    printf("Chance (V,V): %f\n", VV/Rep);
-    printf("Chance (V,B): %f\n", VB/Rep);
-    printf("Chance (B,V): %f\n", BV/Rep);
-    printf("Chance (B,B): %f\n", BB/Rep);
+    printf("Chance (V,V): %.3f\n", VV/Rep);
+    printf("Chance (V,B): %.3f\n", VB/Rep);
+    printf("Chance (B,V): %.3f\n", BV/Rep);
+    printf("Chance (B,B): %.3f\n", BB/Rep);
 
     return 0;
 }

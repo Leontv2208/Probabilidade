@@ -25,7 +25,9 @@ int main(){
         int x = rand() % 100;
         int y = rand() % 100;
 
+        //retira 1ª bola vermelha
         if (x < C_Vermelha) {
+            //retira 2ª bola vermelha
             if (y < C_Vermelha) {
                 VV++;
             } else {
