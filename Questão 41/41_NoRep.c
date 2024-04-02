@@ -1,58 +1,52 @@
-//
-// Created by leona on 27/03/2024.
-//
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#define Rep 1000
+#define Rep 100000
 
 
 int main(){
 
     srand(time(NULL));
 
-    int B_Vermelhas, B_Brancas, B_Preta;
-    int DuasCada;
-    int B_Urna = B_Brancas+B_Vermelhas+B_Preta;
-    int check;
+    double B_Vermelhas = 8;
+    double B_Brancas = 4;
+    double B_Preta = 6;
+    double DuasCada;
 
-    for (int i = 0; i < Rep; ++i) {
+    double B_Urna = B_Brancas+B_Vermelhas+B_Preta;
 
-        B_Vermelhas = 8;
-        B_Brancas = 4;
-        B_Preta = 6;
+    double C_Vermelha = (B_Vermelhas/B_Urna)*100;
+    double C_Branca = (B_Brancas/B_Urna)*100;
+    double C_Preta = (B_Preta/B_Urna)*100;
 
+    for (int i=0;i<Rep;i++) {
         int VCount=0;
         int BCount=0;
         int PCount=0;
 
         for (int j = 0; j < 6; ++j) {
-            check = rand()%B_Urna;
+            int check = rand()%100;
 
-            if(check<B_Brancas){
-                B_Brancas--;
-                BCount++;
-            } else if (check>B_Brancas&&check<(B_Brancas+B_Preta)){
-                B_Preta--;
-                PCount++;
-            } else {
-                B_Vermelhas--;
+            if(check<C_Vermelha){
                 VCount++;
+                B_Vermelhas--;
+            } else if(check>=C_Vermelha && check<(C_Vermelha+C_Branca)) {
+                BCount++;
+                B_Brancas--;
+            } else {
+                PCount++;
+                B_Preta--;
             }
-            if(VCount==2&&PCount==2&&BCount==2){
-                printf("a\n");
-            }
-
         }
-
-
+        if(VCount==2 && BCount==2 && PCount==2){
+            DuasCada++;
+        }
+        //printf("%d %d %d\n", VCount, BCount, PCount);
     }
 
-
     printf("Sem reposicao\n");
-    printf("Quantidade de duas cada: %d\n", DuasCada);
+    printf("Chance de duas cada: %f", DuasCada/Rep);
 
-    printf("Chance: %f\n", (double)DuasCada/Rep);
 
     return 0;
 }

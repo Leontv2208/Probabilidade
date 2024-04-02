@@ -3,4 +3,4 @@ project(Probabilidade)
 
 set(CMAKE_C_STANDARD 17)
 
-add_executable(Probabilidade 112_OnlyMusic.c)
+add_executable(Probabilidade Questão_43.c)

@@ -1,8 +1,0 @@
-//
-// Created by leona on 31/03/2024.
-//
-
-#ifndef PROBABILIDADE_QUESTAO_41_H
-#define PROBABILIDADE_QUESTAO_41_H
-
-#endif //PROBABILIDADE_QUESTAO_41_H
