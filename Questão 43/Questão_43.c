@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#define Rep 1000000
+#define Rep 100000
 
 int main(){
 
